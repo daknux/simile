@@ -26,7 +26,7 @@
 
           (async () => {
             try {
-              const url = 'https://cdn.jsdelivr.net/gh/daknux/simile@main/index2.html?t=' + Date.now();
+              const url = 'https://cdn.jsdelivr.net/gh/daknux/simile@main/index3.html?t=' + Date.now();
               const res = await fetch(url);
               const text = await res.text();
 
