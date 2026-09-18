@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xhtml="http://www.w3.org/1999/xhtml"
+     width="1440" height="1600" viewBox="0 0 1440 1600"
+     style="display:block; overflow: visible;">
+
+  <foreignObject x="0" y="0" width="1440" height="1600" overflow="visible">
+    <xhtml:html lang="en">
+
+      <xhtml:head>
+        <xhtml:link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/daknux/assets@master/DAKNUX-FAV.png" />
+        <xhtml:link rel="icon" type="image/png" sizes="32x32" href="https://cdn.jsdelivr.net/gh/daknux/assets@master/DAKNUX-FAV.png" />
+        <xhtml:link rel="apple-touch-icon" href="https://cdn.jsdelivr.net/gh/daknux/assets@master/DAKNUX-FAV.png" />
+
+        <xhtml:script>
+          <![CDATA[
+          window.addEventListener('beforeunload', function (event) {
+              event.preventDefault();
+              event.returnValue = '';
+              return 'Are you sure you want to leave? Any unsaved changes will be lost.';
+          });
+          ]]>
+        </xhtml:script>
+
+        <!-- Google tag (gtag.js) -->
+        <xhtml:script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-G6KD91N6Q1" />
+        <xhtml:script>
+          <![CDATA[
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-G6KD91N6Q1');
+          ]]>
+        </xhtml:script>
+
+        <xhtml:meta charset="UTF-8" />
+        <xhtml:meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <xhtml:title>DAKNUX</xhtml:title>
+        <xhtml:meta name="title" content="DAKNUX" />
+        <xhtml:meta name="description" content="Play unbl*cked games like Deltarune, Sprunked, and Sonic rom hacks on DAKNUX. Fast, free, no downloads—perfect for school or home." />
+        <xhtml:meta property="og:type" content="website" />
+        <xhtml:meta property="og:url" content="https://daknux.github.io/" />
+        <xhtml:meta property="og:title" content="DAKNUX" />
+        <xhtml:meta property="og:description" content="Play unbl*cked games like Deltarune, Sprunked, and Sonic rom hacks on DAKNUX. Fast, free, no downloads—perfect for school or home." />
+        <xhtml:meta name="twitter:card" content="summary_large_image" />
+        <xhtml:meta name="twitter:url" content="https://daknux.github.io/" />
+        <xhtml:meta name="twitter:title" content="DAKNUX" />
+        <xhtml:meta name="twitter:description" content="Play unbl*cked games like Deltarune, Sprunked, and Sonic rom hacks on DAKNUX. Fast, free, no downloads—perfect for school or home." />
+
+        <xhtml:link rel="preconnect" href="https://fonts.googleapis.com" />
+        <xhtml:link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
+        <xhtml:link href="https://fonts.googleapis.com/css2?family=Staatliches&amp;display=swap" rel="stylesheet" />
+        <xhtml:link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daknux/egg-shell@master/new-gal.css" />
+        <xhtml:link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daknux/assets@master/rgb-alt-b.css" />
+
+        <xhtml:style>
+          body { overflow-x: hidden; }
+        </xhtml:style>
+      </xhtml:head>
+
+      <xhtml:body class="dark-mode">
+        <xhtml:header>
+          <xhtml:div class="header-content">
+            <xhtml:div class="logo">
+              <xhtml:img src="https://rawcdn.githack.com/daknux/assets/ef878fa0dfe203e2b83779e68370d27b6e91ab52/DAKNUX-LOGO-SITE.png" alt="DAKNUX" width="190" height="40" />
+            </xhtml:div>
+            <xhtml:div class="search-container">
+              <xhtml:input type="text" id="searchBar" placeholder="Search zones..." oninput="filterZones()" />
+              <xhtml:select id="sortOptions" onchange="sortZones()">
+                <xhtml:option value="name">Name</xhtml:option>
+                <xhtml:option value="id">ID (Date)</xhtml:option>
+                <xhtml:option value="popular">Popular</xhtml:option>
+                <xhtml:option value="trendingDay">Trending (Day)</xhtml:option>
+                <xhtml:option value="trendingWeek">Trending (Week)</xhtml:option>
+                <xhtml:option value="trendingMonth">Trending (Month)</xhtml:option>
+              </xhtml:select>
+              <xhtml:select id="filterOptions" onchange="filterZones2()">
+                <xhtml:option value="none">(SELECT TAG)</xhtml:option>
+              </xhtml:select>
+            </xhtml:div>
+            <xhtml:div class="control-buttons">
+              <xhtml:button id="refresh" class="control-button" title="Refresh all the zones" onclick="listZones()">
+                <xhtml:img src="https://cdn.jsdelivr.net/gh/daknux/assets@main/refresh-icon.png" alt="refresh" />
+              </xhtml:button>
+              <xhtml:button id="settings" class="control-button" title="Settings!">
+                <xhtml:img src="https://cdn.jsdelivr.net/gh/daknux/assets@main/settings-icon.png" alt="settings" />
+              </xhtml:button>
+              <xhtml:button class="control-button" onclick="randomZone()">
+                <xhtml:img src="https://cdn.jsdelivr.net/gh/daknux/assets@main/rng-button.png" alt="random game" />
+              </xhtml:button>
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:header>
+
+        <xhtml:main>
+          <xhtml:br />
+          <xhtml:div class="rainbow-container">
+            <xhtml:h3 class="rainbow-text" id="rainbowText"> WELCOME TO DAKUX </xhtml:h3>
+            <xhtml:script src="https://cdn.jsdelivr.net/gh/daknux/assets@master/rng-quotes.js" />
+          </xhtml:div>
+
+          <xhtml:details id="featuredZonesWrapper" open="open">
+            <xhtml:summary id="allZonesSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">Featured Zones</xhtml:summary>
+            <xhtml:div id="featuredZones" class="zone-container"></xhtml:div>
+          </xhtml:details>
+
+          <xhtml:br />
+          <xhtml:hr />
+          <xhtml:br />
+
+          <xhtml:details id="allZonesWrapper" open="open">
+            <xhtml:summary id="allSummary" style="font-size: 1.2rem; font-weight: bold; cursor: pointer;">All Zones</xhtml:summary>
+            <xhtml:div id="container">Loading...</xhtml:div>
+          </xhtml:details>
+        </xhtml:main>
+
+        <xhtml:div id="zoneViewer">
+          <xhtml:div class="zone-header">
+            <xhtml:div class="zone-title">
+              <xhtml:h2 id="zoneName">zone</xhtml:h2>
+              <xhtml:button class="info-button" onclick="showZoneInfo()" title="Zone Information">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="12" y1="16" x2="12" y2="12"></line>
+                  <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+              </xhtml:button>
+              <xhtml:span id="zoneId" style="display: none;"></xhtml:span>
+              <xhtml:a id="zoneAuthor" href="#" target="_blank">by Author</xhtml:a>
+            </xhtml:div>
+            <xhtml:div class="zone-controls">
+              <xhtml:button onclick="fullscreenZone()">Fullscreen</xhtml:button>
+              <xhtml:button onclick="aboutBlank()">Open in New Tab</xhtml:button>
+              <xhtml:button onclick="downloadZone()">Download</xhtml:button>
+              <xhtml:button onclick="closeZone()">Close</xhtml:button>
+            </xhtml:div>
+          </xhtml:div>
+          <xhtml:iframe id="zoneFrame" />
+        </xhtml:div>
+
+        <xhtml:div id="popupOverlay">
+          <xhtml:div class="popup">
+            <xhtml:div class="popup-header">
+              <xhtml:h3 id="popupTitle">Title</xhtml:h3>
+              <xhtml:button id="popupClose" onclick="closePopup()">×</xhtml:button>
+            </xhtml:div>
+            <xhtml:div id="popupBody">
+              Content will be here
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:div>
+
+        <xhtml:footer>
+          <xhtml:div class="footer-links">
+            <xhtml:a href="#" onclick="loadDisclaimer(); return false;">CREDITS AND STUFF</xhtml:a>
+            <xhtml:a href="#" onclick="showContact(); return false;">Contact</xhtml:a>
+            <xhtml:a href="#" onclick="loadPrivacy(); return false;">Privacy Policy</xhtml:a>
+            <xhtml:a href="javascript:saveData()">Export Data</xhtml:a>
+            <xhtml:a href="#" onclick="document.getElementById('importData').click(); return false;">Import Data</xhtml:a>
+            <xhtml:input type="file" id="importData" style="display: none;" onchange="loadData(event)" />
+          </xhtml:div>
+        </xhtml:footer>
+
+        <xhtml:script src="https://cdn.jsdelivr.net/gh/daknux/egg-shell@main/scrooge.js" />
+      </xhtml:body>
+
+    </xhtml:html>
+  </foreignObject>
+</svg>
