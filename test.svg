@@ -50,7 +50,7 @@
         <xhtml:link rel="preconnect" href="https://fonts.googleapis.com" />
         <xhtml:link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin" />
         <xhtml:link href="https://fonts.googleapis.com/css2?family=Staatliches&amp;display=swap" rel="stylesheet" />
-        <xhtml:link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daknux/egg-shell@master/new-gal.css" />
+        <xhtml:link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daknux/egg-shell@master/toddlahood.css" />
         <xhtml:link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/daknux/assets@master/rgb-alt-b.css" />
 
         <xhtml:style>
