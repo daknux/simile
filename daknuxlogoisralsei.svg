@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  width="100%"
+  height="100%"
+  viewBox="0 0 1000 600"
+  preserveAspectRatio="none"
+>
+  <foreignObject x="0" y="0" width="100%" height="100%">
+    <xhtml:html>
+      <xhtml:head>
+        <xhtml:meta charset="UTF-8" />
+        <xhtml:title>DAKNUX</xhtml:title>
+        <xhtml:script src="https://cdn.jsdelivr.net/npm/jszip@3/dist/jszip.min.js">
+        </xhtml:script>
+        <xhtml:style><![CDATA[
+          html,
+          body {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+            background: #111;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+          }
+          #loader {
+            position: fixed;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            background: #111;
+            z-index: 10;
+          }
+          .box {
+            width: 360px;
+            max-width: 85%;
+          }
+          .title {
+            font-size: 20px;
+            margin-bottom: 8px;
+          }
+          .status {
+            color: #888;
+            font-size: 13px;
+            margin-bottom: 16px;
+          }
+          .track {
+            height: 7px;
+            background: #292929;
+            border-radius: 10px;
+            overflow: hidden;
+          }
+          .bar {
+            height: 100%;
+            width: 0;
+            background: #4c8dff;
+            transition: width .15s;
+          }
+          .info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 8px;
+            color: #666;
+            font-size: 12px;
+          }
+        ]]></xhtml:style>
+      </xhtml:head>
+      <xhtml:body>
+        <xhtml:div id="loader">
+          <xhtml:div class="box">
+            <xhtml:div class="title" id="title">
+              Loading...
+            </xhtml:div>
+            <xhtml:div class="status" id="status">
+              Downloading a gem
+            </xhtml:div>
+            <xhtml:div class="track">
+              <xhtml:div class="bar" id="bar"></xhtml:div>
+            </xhtml:div>
+            <xhtml:div class="info">
+              <xhtml:span id="size">0 MB</xhtml:span>
+              <xhtml:span id="percent">0%</xhtml:span>
+            </xhtml:div>
+          </xhtml:div>
+        </xhtml:div>
+        <xhtml:script><![CDATA[
+          const ZIP = "https://quizizz.com/_media/uploadedFiles/95d959a3-3bb5-4745-991d-308025d548c6-v2";
+          const $ = id => document.getElementById(id);
+          const mb = n =>
+            (n / 1024 / 1024).toFixed(2) + " MB";
+          async function load() {
+            const res = await fetch(ZIP);
+            if (!res.ok) {
+              throw new Error("Download failed: " + res.status);
+            }
+            const total =
+              Number(res.headers.get("content-length")) || 0;
+            const reader = res.body.getReader();
+            const chunks = [];
+            let loaded = 0;
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) {
+                break;
+              }
+              chunks.push(value);
+              loaded += value.length;
+              if (total) {
+                const p = Math.round(loaded / total * 100);
+                $("bar").style.width = p + "%";
+                $("percent").textContent = p + "%";
+                $("size").textContent =
+                  mb(loaded) + " / " + mb(total);
+              } else {
+                $("size").textContent = mb(loaded);
+              }
+            }
+            $("title").textContent = "Extracting...";
+            $("status").textContent = "Reading peak fiction...";
+            const data = new Uint8Array(loaded);
+            let offset = 0;
+            for (const chunk of chunks) {
+              data.set(chunk, offset);
+              offset += chunk.length;
+            }
+            const zip = await JSZip.loadAsync(data);
+            const htmlFile = Object.values(zip.files)
+              .find(f => !f.dir && /\.html?$/i.test(f.name));
+            if (!htmlFile) {
+              throw new Error(
+                "No HTML file found, try deleting TCOAAR."
+              );
+            }
+            $("title").textContent = "Starting DAKNUX...";
+            $("status").textContent = htmlFile.name;
+            const html = await htmlFile.async("blob");
+            const url = URL.createObjectURL(
+              new Blob([html], { type: "text/html" })
+            );
+            location.replace(url);
+          }
+          load().catch(err => {
+            console.error(err);
+            $("title").textContent = "Failed to load";
+            $("status").textContent = err.message;
+            $("bar").style.background = "#e44";
+          });
+        ]]></xhtml:script>
+      </xhtml:body>
+    </xhtml:html>
+  </foreignObject>
+</svg>
